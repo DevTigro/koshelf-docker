@@ -1,12 +1,6 @@
 name: Build and Push Docker Image
 
 on:
-  push:
-    branches: [ main ]
-    tags:
-      - 'v*'
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
     inputs:
       koshelf_version:
@@ -102,23 +96,3 @@ jobs:
           cache-to: type=gha,mode=max
           build-args: |
             KOSHELF_VERSION=${{ steps.version.outputs.koshelf_version }}
-
-      - name: Create release notes
-        if: github.event_name == 'workflow_dispatch' && inputs.docker_tag != 'latest'
-        run: |
-          cat << EOF > release-notes.md
-          ## Docker Image Release
-          
-          **KoShelf Version**: \`${{ inputs.koshelf_version }}\`
-          **Docker Tag**: \`${{ inputs.docker_tag }}\`
-          **Platforms**: \`${{ inputs.platforms }}\`
-          
-          ### Pull this image:
-          \`\`\`bash
-          docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ inputs.docker_tag }}
-          \`\`\`
-          
-          ### Upstream Repository:
-          https://github.com/paviro/KoShelf
-          EOF
-          cat release-notes.md
