@@ -9,7 +9,7 @@ All your KOReader notes & highlights combined into a beautiful reading dashboard
 ```yaml
 services:
   koshelf:
-    image: ghcr.io/devtigro/koshelf-docker:latest
+    image: ghcr.io/devtigro/koshelf:latest
     ports:
      - "3000:3000"
     volumes:
