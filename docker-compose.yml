@@ -1,0 +1,9 @@
+services:
+  koshelf:
+    image: ghcr.io/devtigro/koshelf:latest
+    expose:
+      - "3000"
+    volumes:
+      - /root/koreader/ajsel/books:/books:ro
+      - /root/koreader/ajsel/settings:/settings:ro
+    restart: "unless-stopped"
