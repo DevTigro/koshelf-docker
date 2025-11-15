@@ -15,6 +15,7 @@ services:
     volumes:
       - /path/to/your/books:/books:ro
       - /path/to/your/settings:/settings:ro
+    restart: "unless-stopped"
 ```
 ---
 
