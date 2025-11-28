@@ -4,11 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       koshelf_version:
-        description: 'KoShelf version to build (tag or branch)'
-        required: true
-        default: 'latest'
-      docker_tag:
-        description: 'Docker image tag (e.g., v1.2.3 or latest)'
+        description: 'KoShelf version to build (e.g., v1.2.3 or latest)'
         required: true
         default: 'latest'
       platforms:
@@ -51,41 +47,24 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Determine KoShelf version
-        id: version
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "koshelf_version=${{ inputs.koshelf_version }}" >> $GITHUB_OUTPUT
-          else
-            echo "koshelf_version=latest" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Determine platforms
-        id: platforms
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "platforms=${{ inputs.platforms }}" >> $GITHUB_OUTPUT
-          else
-            echo "platforms=linux/amd64,linux/arm64" >> $GITHUB_OUTPUT
-          fi
-
       - name: Extract metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=raw,value=${{ inputs.docker_tag }}
+            type=raw,value=${{ inputs.koshelf_version }}
+            type=raw,value=latest
             type=sha,prefix=sha-
 
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          platforms: ${{ steps.platforms.outputs.platforms }}
+          platforms: ${{ inputs.platforms }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
-            KOSHELF_VERSION=${{ steps.version.outputs.koshelf_version }}
+            KOSHELF_VERSION=${{ inputs.koshelf_version }}
