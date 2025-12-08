@@ -57,5 +57,9 @@ if [ -n "$KOSHELF_MIN_TIME_PER_DAY" ]; then
     ARGS="$ARGS --min-time-per-day $KOSHELF_MIN_TIME_PER_DAY"
 fi
 
+if [ "$KOSHELF_INCLUDE_ALL_STATS" = "true" ]; then
+    ARGS="$ARGS --include-all-stats"
+fi
+
 echo "Starting KoShelf with: /koshelf $ARGS $@"
 eval exec /koshelf $ARGS "$@"
