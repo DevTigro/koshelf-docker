@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /tmp
 
 ARG KOSHELF_VERSION=latest
-ARG TARGETARCH=linux/amd64,linux/arm64
+ARG TARGETARCH
 
 RUN if [ "$KOSHELF_VERSION" = "latest" ]; then \
         echo "Fetching latest KoShelf version..." && \
@@ -20,9 +20,10 @@ RUN if [ "$KOSHELF_VERSION" = "latest" ]; then \
     echo "$KOSHELF_VERSION" > /tmp/version.txt
 
 RUN KOSHELF_VERSION=$(cat /tmp/version.txt) && \
+    echo "Building for architecture: ${TARGETARCH}" && \
     case ${TARGETARCH} in \
-        "amd64") ARCH="x86_64" ;; \
-        "arm64") ARCH="aarch64" ;; \
+        amd64) ARCH="x86_64" ;; \
+        arm64) ARCH="aarch64" ;; \
         *) echo "Unsupported architecture: ${TARGETARCH}" && exit 1 ;; \
     esac && \
     URL="https://github.com/paviro/KoShelf/releases/download/${KOSHELF_VERSION}/linux-musl-${ARCH}.zip" && \
@@ -39,10 +40,9 @@ RUN ./koshelf --github || echo "Binary check completed"
 FROM alpine:3.22
 
 COPY --from=downloader /tmp/version.txt /version.txt
-
 COPY --from=downloader /tmp/koshelf /koshelf
-
 COPY entrypoint.sh /entrypoint.sh
+
 RUN chmod +x /entrypoint.sh
 
 RUN adduser -D -u 65532 koshelf && \
