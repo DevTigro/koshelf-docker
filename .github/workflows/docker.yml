@@ -9,7 +9,7 @@ env:
   IMAGE_NAME: ${{ github.repository_owner }}/koshelf
 
 jobs:
-fetch-release:                                                                                                                                                     
+  fetch-release:                                                                                                                                                     
     runs-on: ubuntu-latest                                                                                                                                           
     steps:                                                                                                                                                           
       - name: Get Latest Release                                                                                                                                     
