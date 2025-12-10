@@ -29,7 +29,7 @@ jobs:
           koshelf_version=${{ steps.latest_release.outputs.release }}
           platforms='linux/amd64,linux/arm64'
           echo "Latest release version: ${{ steps.latest_release.outputs.release }}"
-          echo "Repository variable: ${{ vars.KOSHELF_VERSION}}
+          echo "Repository variable: ${{ vars.KOSHELF_VERSION}}"
 
   build:
     runs-on: ubuntu-latest
