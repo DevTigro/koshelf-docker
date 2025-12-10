@@ -62,13 +62,13 @@ fetch-release:
             type=sha,prefix=sha-
 
       - name: Build and push
+        if: ${{vars.KOSHELF_VERSION != steps.latest_release.outputs.release}}
         uses: docker/build-push-action@v6
         with:
-          platforms: ${{ inputs.platforms }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
-            KOSHELF_VERSION=${{ inputs.koshelf_version }}
+            KOSHELF_VERSION=${{ koshelf_version }}
