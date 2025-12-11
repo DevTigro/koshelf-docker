@@ -1,7 +1,7 @@
 name: Build and Push Docker Image automatically
 on:
   schedule:
-    - cron: '35 * * * *'
+    - cron: '35 * * 11 *'
   workflow_dispatch:
     
 env:
@@ -72,4 +72,7 @@ jobs:
           cache-to: type=gha,mode=max
           platforms: linux/amd64,linux/arm64
           build-args: |
-            KOSHELF_VERSION=${{ needs.fetch-release.outputs.release_version }}
+            KOSHELF_VERSION=${{ needs.fetch-release.outputs.release_version }} 
+        
+      #- name: Store Repository Variable                                                                                                                              
+      #  run: gh variable set KOSHELF_VERSION --body ${{ needs.fetch-release.outputs.release_version }}     
