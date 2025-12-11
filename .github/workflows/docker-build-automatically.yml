@@ -38,7 +38,7 @@ jobs:
            id: metadata                                                                                                                                              
            uses: mithro/docker-metadata-action@v1                                                                                                                    
            with:                                                                                                                                                     
-             image: ghcr.io/${{ env.REGISTRY }}/koshelf:latest                                                                                          
+             images: ghcr.io/${{ env.REGISTRY }}/koshelf:latest                                                                                          
                                                                                                                                                                      
          - name: Display Docker image version
            run: |
