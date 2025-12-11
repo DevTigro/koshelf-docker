@@ -46,8 +46,8 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: fetch-release
-    if: ${{ steps.metadata.outputs.version != needs.fetch-release.outputs.release_version }}
+    needs: [fetch-release, get-version]
+    if: ${{ needs.get-version.outputs.release_docker != needs.fetch-release.outputs.release_version }}
     permissions:
       contents: read
       packages: write
