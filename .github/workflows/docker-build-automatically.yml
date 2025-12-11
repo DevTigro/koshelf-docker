@@ -1,4 +1,4 @@
-ename: Build and Push Docker Image automatically
+name: Build and Push Docker Image automatically
 on:
   schedule:
     - cron: '35 * * * *'
