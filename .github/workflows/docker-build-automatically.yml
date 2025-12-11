@@ -30,18 +30,18 @@ jobs:
     runs-on: ubuntu-latest                                                                                                                                           
     outputs:
       release_docker: ${{ steps.metadata.outputs.version}}                                                                                                                                                                 
-    steps:                                                                                                                                                           
-      - name: Checkout repository                                                                                                                                    
-        uses: actions/checkout@v3                                                                                                                                    
+    steps:                                                                                                                                                        
+         - name: Checkout repository                                                                                                                                 
+           uses: actions/checkout@v3                                                                                                                                 
                                                                                                                                                                      
-      - name: Retrieve Docker image metadata                                                                                                                         
-        id: metadata                                                                                                                                                 
-        uses: docker/metadata-action@v4                                                                                                                              
-        with:                                                                                                                                                        
-          images: 'ghcr.io/${{ github.repository }}'                                                                                                                 
+         - name: Extract Docker image metadata                                                                                                                       
+           id: metadata                                                                                                                                              
+           uses: mithro/docker-metadata-action@v1                                                                                                                    
+           with:                                                                                                                                                     
+             image: ghcr.io/${{ github.repository }}/koshelf:latest                                                                                          
                                                                                                                                                                      
-      - name: Extract version from metadata                                                                                                                          
-        run: echo "Docker image version: ${{ steps.metadata.outputs.version }}"                            
+         - name: Display Docker image version                                                                                                                        
+           run: echo "Docker image version: ${{ steps.metadata.outputs.version }}" 
 
   build:
     runs-on: ubuntu-latest
