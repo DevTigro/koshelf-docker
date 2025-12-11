@@ -29,7 +29,10 @@ jobs:
   get-version:                                                                                                                                                       
     runs-on: ubuntu-latest                                                                                                                                           
     outputs:
-      release_docker: LATEST_VERSION                                                                                                                                                     
+      release_docker: LATEST_VERSION 
+    permissions:
+      contents: read
+      packages: write
     steps:                                                                                                                                                        
       - name: Checkout repository                                                                                                                                 
         uses: actions/checkout@v3                                                                                                                                 
