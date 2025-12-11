@@ -43,7 +43,7 @@ jobs:
       - name: Retrieve latest package version                                                                                                                        
         id: get_version                                                                                                                                              
         run: |                                                                                                                                                       
-          PACKAGE_NAME="koshelf"
+          PACKAGE_NAME="koshelf-docker"
           PACKAGE_OWNER="alva-seal"
           PACKAGE_TYPE="container"
           LATEST_VERSION=$(gh api "repos/${PACKAGE_OWNER}/packages/${PACKAGE_TYPE}/${PACKAGE_NAME}/versions" --jq '.[0].name')                                       
