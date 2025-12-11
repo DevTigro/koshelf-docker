@@ -12,7 +12,7 @@ jobs:
   fetch-release:
     runs-on: ubuntu-latest
     outputs:
-      release_version: ${{ steps.latest_release.outputs.release }}
+      release_version: ${{ steps.latest_release.outputs.tag }}
     steps:
       - name: Get Latest Release
         id: latest_release
@@ -24,7 +24,7 @@ jobs:
                                                                                                                                                                      
       - name: Display Latest Release  
         run: |
-          echo "Latest release version: ${{ steps.latest_release.outputs.release }}"
+          echo "Latest release version: ${{ steps.latest_release.outputs.tag }}"
 
   get-version:                                                                                                                                                       
     runs-on: ubuntu-latest                                                                                                                                           
