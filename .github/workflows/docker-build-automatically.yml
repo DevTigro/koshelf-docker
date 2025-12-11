@@ -104,4 +104,4 @@ jobs:
             KOSHELF_VERSION=${{ needs.fetch-release.outputs.release_version }}
             
       - name: Store Repository Variable                                                                                                                              
-       run: gh variable set KOSHELF_VERSION --body ${{ needs.fetch-release.outputs.release_version }}     
+        run: gh variable set KOSHELF_VERSION --body ${{ needs.fetch-release.outputs.release_version }}     
