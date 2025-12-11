@@ -29,7 +29,7 @@ jobs:
   get-version:                                                                                                                                                       
     runs-on: ubuntu-latest                                                                                                                                           
     outputs:
-      release_docker: ${{ steps.metadata.outputs.tag}}                                                                                                                                                                 
+      release_docker: ${{ steps.metadata.outputs.tags}}                                                                                                                                                                 
     steps:                                                                                                                                                        
          - name: Checkout repository                                                                                                                                 
            uses: actions/checkout@v3                                                                                                                                 
@@ -41,7 +41,7 @@ jobs:
              images: ghcr.io/${{ env.REGISTRY }}/koshelf                                                                                                             
          - name: Display Docker image version
            run: |
-             echo "Latest release version: ${{ steps.metadata.outputs.tag }}"
+             echo "Latest release version: ${{ steps.metadata.outputs.tags }}"
 
   build:
     runs-on: ubuntu-latest
