@@ -30,3 +30,24 @@ You can run Syncthing on your host or across multiple devices to sync your KORea
 The KoShelf Docker container will automatically reflect the latest notes, highlights, and settings without needing to restart or manually update data.
 
 This setup allows for seamless syncing of your reading data between devices while KoShelf always serves the most recent version.
+
+### Enviroment Variables
+|Enviroment Variable| cli flag|
+|-------------------|---------|
+|KOSHELF_BOOKS_PATH|flag|--books-path|
+|KOSHELF_STATISTICS_DB|--statistics-db| 
+|KOSHELF_PORT|--port|
+|KOSHELF_DOCSETTINGS_PATH|--docsettings-path|
+|KOSHELF_HASHDOCSETTINGS_PATH|--hashdocsettings-path|
+|KOSHELF_OUTPUT|--output|
+|KOSHELF_WATCH|--watch|
+|KOSHELF_TITLE|--title|
+|KOSHELF_INCLUDE_UNREAD|--include-unread|
+|KOSHELF_HEATMAP_SCALE_MAX|--heatmap-scale-max|
+|KOSHELF_TIMEZONE|--timezone|
+|KOSHELF_DAY_START_TIME|--day-start-time|
+|KOSHELF_MIN_PAGES_PER_DAY|--min-pages-per-day|
+|KOSHELF_MIN_TIME_PER_DAY|--min-time-per-day|
+|KOSHELF_INCLUDE_ALL_STATS|--include-all-stats|
+
+for detailed information regarding the cli flags please look at the https://github.com/paviro/KoShelf repository
