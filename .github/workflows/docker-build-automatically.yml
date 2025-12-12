@@ -1,12 +1,13 @@
 name: Build and Push Docker Image automatically
 on:
   schedule:
-    - cron: '35 * * 11 *'
+    - cron: '42 * * * *'
   workflow_dispatch:
     
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository_owner }}/koshelf
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
   fetch-release:
@@ -73,6 +74,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             KOSHELF_VERSION=${{ needs.fetch-release.outputs.release_version }} 
-        
-      #- name: Store Repository Variable                                                                                                                              
-      #  run: gh variable set KOSHELF_VERSION --body ${{ needs.fetch-release.outputs.release_version }}     
+  
+      - name: Store Repository Variable                                                                                                                              
+        run: gh variable set KOSHELF_VERSION --body ${{ needs.fetch-release.outputs.release_version }}     
