@@ -34,7 +34,7 @@ This setup allows for seamless syncing of your reading data between devices whil
 ### Enviroment Variables
 |Enviroment Variable| cli flag|explanaition|
 |-------------------|---------|------------|
-|KOSHELF_BOOKS_PATH: "/books"|--books-path|Path to your folder containing EPUB files and KoReader metadata|
+|KOSHELF_LIBRARY_PATH: "/books"|--library-path|Path(s) to folders containing ebooks (EPUB, FB2, MOBI) and/or comics (CBZ, CBR) with KoReader metadata. Can be specified multiple times. <br> replaces the deprecated KOSHELF_BOOKS_PATH (can still be used for now)|
 |KOSHELF_STATISTICS_DB: "/settings"|--statistics-db| Path to the folder with the statistics.sqlite3 file for additional reading stats|
 |KOSHELF_PORT: 3000|--port|Port for web server mode (default: 3000)|
 |KOSHELF_DOCSETTINGS_PATH: "/docsettings"|--docsettings-path|Path to KOReader's docsettings folder for users who store metadata separately (requires KOSHELF_BOOKS_PATH, mutually exclusive with KOSHELF_HASHDOCSETTINGS_PATH)|
