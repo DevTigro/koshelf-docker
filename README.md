@@ -42,7 +42,7 @@ This setup allows for seamless syncing of your reading data between devices whil
 |KOSHELF_OUTPUT: True|--output|Output directory for the generated site|
 |KOSHELF_WATCH: True|--watch|Enable file watching with static output (requires KOSHELF_OUTPUT)|
 |KOSHELF_TITLE: "My KoShelf"|--title|Site title (default: "KoShelf")|
-|KOSHELF_INCLUDE_UNREAD: True|--include-unread|Include unread books (EPUBs without KoReader metadata)|
+|KOSHELF_INCLUDE_UNREAD: True|--include-unread|Include unread items (files without KoReader metadata)|
 |KOSHELF_HEATMAP_SCALE_MAX: "auto"|--heatmap-scale-max|Maximum value for heatmap color intensity scaling (e.g., "auto", "1h", "1h30m", "45min"). Values above this will still be shown but use the highest color intensity. Default is "auto" for automatic scaling|
 |KOSHELF_TIMEZONE: "Europe/Oslo" |--timezone|Timezone to interpret timestamps (IANA name, e.g., Australia/Sydney); defaults to system local|
 |KOSHELF_DAY_START_TIME: "02:00" |--day-start-time|Logical day start time as HH:MM (default: 00:00)|
