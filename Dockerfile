@@ -48,7 +48,7 @@ RUN chmod +x /entrypoint.sh
 RUN adduser -D -u 65532 koshelf && \
     chown koshelf:koshelf /koshelf
 
-ENV KOSHELF_BOOKS_PATH="/books"
+ENV KOSHELF_LIBRARY_PATH="/books"
 ENV KOSHELF_STATISTICS_DB="/settings/statistics.sqlite3"
 ENV KOSHELF_PORT="3000"
 ENV KOSHELF_OUTPUT=""
