@@ -89,5 +89,13 @@ if [ -n "$KOSHELF_TRUSTED_PROXIES" ]; then
     ARGS="$ARGS --trusted-proxies $KOSHELF_TRUSTED_PROXIES"
 fi
 
+if [ -n "$KOSHELF_ENABLE_WRITEBACK" ]; then
+    ARGS="$ARGS --enable-writeback $KOSHELF_ENABLE_WRITEBACK"
+fi
+
+if [ -n "$KOSHELF_KOBO_DB" ]; then
+    ARGS="$ARGS --kobo-db $KOSHELF_KOBO_DB"
+fi
+
 echo "Starting KoShelf with: koshelf serve $ARGS $@"
 eval exec koshelf serve $ARGS "$@"
