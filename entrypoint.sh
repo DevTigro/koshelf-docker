@@ -89,8 +89,8 @@ if [ -n "$KOSHELF_TRUSTED_PROXIES" ]; then
     ARGS="$ARGS --trusted-proxies $KOSHELF_TRUSTED_PROXIES"
 fi
 
-if [ -n "$KOSHELF_ENABLE_WRITEBACK" ]; then
-    ARGS="$ARGS --enable-writeback $KOSHELF_ENABLE_WRITEBACK"
+if [ "KOSHELF_ENABLE_WRITEBACK" = "true" ]; then
+    ARGS="$ARGS -enable-writeback"
 fi
 
 if [ -n "$KOSHELF_KOBO_DB" ]; then
