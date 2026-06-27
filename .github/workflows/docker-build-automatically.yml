@@ -23,11 +23,12 @@ jobs:
     steps:
       - name: Get Latest Release
         id: latest_release
-        uses: pozetroninc/github-action-get-latest-release@master
+        uses: rez0n/actions-github-release@main
         with:
-          owner: 'paviro'
-          repo: 'KoShelf'
-          excludes: ''
+          token: ${{ secrets.GH_TOKEN }}
+          repository: "paviro/KoShelf"
+          type: "latest"
+      
                                                                                                                                                                      
       - name: Display Latest Release  
         run: |
